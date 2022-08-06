@@ -1,11 +1,14 @@
 let choices = ['rock','paper','scissor'];
-let x,y;
+let x,y,i;
+
 
 function playerSelection(){
-    var selection = prompt('Rock Paper or Scissor');
+    var selection = prompt('Rock Paper or Scissor ' + '\ngame ends in 5' + '\nRound: '+ i );
     return selection.charAt(0).toLocaleLowerCase() + selection.toLocaleLowerCase().slice(1);
     
 }
+
+//Used the line below for debugging
 /*console.log(playerSelection());*/
 
 function getComputerChoice(){
@@ -13,41 +16,45 @@ function getComputerChoice(){
     return choices[Math.floor(Math.random()*choices.length)];
 }
 
+//Used the line below for debugging
 /*console.log(getComputerChoice());*/
 
-function checkResult(x,y){
+function playRound(x,y){
     
-    if((x === 'rock') & (y === 'rock')){
-        console.log('its a tie, the computer chose rock');
+    if(((x === 'rock') & (y === 'rock')) ||
+      ((x === 'paper') & (y === 'paper')) ||
+      ((x === 'scissor') & (y === 'scissor')))
+        {
+        console.log('its a tie, the computer chose ' + y);
     }
-    else if((x === 'paper') & (y === 'paper')){
-        console.log('its a tie, the computer chose paper');
-    }
-    else if((x === 'scissor') & (y === 'scissor')){
-        console.log('its a tie, the computer chose scissor');
-    }
-    else if((x === 'scissor') & (y === 'rock')){
-     console.log('you lose, rock beats scissors');
+    
+    else if(((x === 'scissor') & (y === 'rock')) || 
+           ((x === 'paper') & (y === 'scissor')) ||
+           ((x === 'rock') & (y === 'paper')))    
+     {
+     console.log('you lose, ' + y + ' beats ' + x);
      }
-    else if((x === 'scissor') & (y === 'paper')){
-     console.log('you win, scissor beats paper');
+    
+    
+    else if(((x === 'scissor') & (y === 'paper'))||
+           ((x === 'paper') & (y === 'rock'))||
+           ((x === 'rock') & (y === 'scissor')))
+    {
+     console.log('you win, '+ x + ' beats ' + y);
     }
-    else if((x === 'paper') & (y === 'scissor')){
-      console.log('you lose, scissor beats paper');
-     }
-    else if((x === 'paper') & (y === 'rock')){
-        console.log('you win, paper beats rock');
-    }
-    else if((x === 'rock') & (y === 'scissor')){
-        console.log('you win, rock beats scissor');
-     }
-    else if((x === 'rock') & (y === 'paper')){
-        console.log('you lose, paper beats rock');
-     }
+
     else{
     console.log('you entered an invalid arguement, please try again');
     
     }
 }
 
-console.log(checkResult(playerSelection(),getComputerChoice()));
+
+
+for(i = 0; i < 5; i++){
+    playRound(playerSelection(),getComputerChoice());
+}
+
+
+
+
