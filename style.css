@@ -1,0 +1,68 @@
+div
+{
+    display: flex;
+    justify-content:space-around;
+    font-family: fantasy;
+    color: aliceblue;
+    align-items: center;
+    cursor: pointer;    
+}
+.choiceBtn
+{
+    display: flex;
+    flex-direction: row;
+    padding: 10px 45px;
+    color: aqua;
+    background:grey;
+    border-radius: 40px;
+    
+}
+.choiceBtn:hover
+{
+    background:black;
+}
+
+
+#resultBox,
+#firstHeader
+{
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    
+}
+
+.resultBox:hover
+{
+    cursor: alias;
+}
+
+.selections
+{
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+h3
+{
+    text-decoration: underline;
+    text-transform:uppercase;
+}
+
+h3:hover
+{
+    color: aqua;   
+}
+
+
+body
+{
+    background:black;
+}
+
+img
+{
+    font-size: 30px;
+    border-width:10px;
+}

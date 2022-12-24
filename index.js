@@ -1,60 +1,57 @@
-let choices = ['rock','paper','scissor'];
-let x,y,i;
+var choiceBtn = document.querySelectorAll('.choiceBtn');
 
 
-function playerSelection(){
-    var selection = prompt('Rock Paper or Scissor ' + '\ngame ends in 5' + '\nRound: '+ i );
-    return selection.charAt(0).toLocaleLowerCase() + selection.toLocaleLowerCase().slice(1);
-    
-}
 
-//Used the line below for debugging
-/*console.log(playerSelection());*/
+let player,plyr;
+let computer,cmpt;
+let result = ' '; 
 
-function getComputerChoice(){
-    
-    return choices[Math.floor(Math.random()*choices.length)];
-}
 
-//Used the line below for debugging
-/*console.log(getComputerChoice());*/
+choiceBtn.forEach(button =>  button.addEventListener("click",() =>                                               
+{
+    player = button.innerText.toLowerCase();
+    computerChoice();
+    console.log(player);
+    playRound(player,computerChoice());
+}))
 
-function playRound(x,y){
-    
-    if(((x === 'rock') & (y === 'rock')) ||
-      ((x === 'paper') & (y === 'paper')) ||
-      ((x === 'scissor') & (y === 'scissor')))
-        {
-        console.log('its a tie, the computer chose ' + y);
-    }
-    
-    else if(((x === 'scissor') & (y === 'rock')) || 
-           ((x === 'paper') & (y === 'scissor')) ||
-           ((x === 'rock') & (y === 'paper')))    
-     {
-     console.log('you lose, ' + y + ' beats ' + x);
-     }
-    
-    
-    else if(((x === 'scissor') & (y === 'paper'))||
-           ((x === 'paper') & (y === 'rock'))||
-           ((x === 'rock') & (y === 'scissor')))
+function computerChoice()
+{
+     var randonInt = Math.floor(Math.random()*3)+1;
+    switch(randonInt)
     {
-     console.log('you win, '+ x + ' beats ' + y);
+        case 1: computer = 'rock';
+            break;
+        case 2: computer = 'scissors';
+            break;
+        case 3: computer = 'paper';
+            break;
     }
-
-    else{
-    console.log('you entered an invalid arguement, please try again');
-    
+    return(computer);
+    //console.log(randonInt +" is the number")
+    //console.log(computer);
+}
+//console.log(resultBox.innerText);
+function playRound(plyr,cmpt)
+{
+    if(
+       (plyr == 'rock' && cmpt=='rock')||
+       (plyr == 'paper' && cmpt=='paper')||
+       (plyr == 'scissors' && cmpt=='scissors')
+      )
+    {
+        result = "Computer Chose " + cmpt+" as well...\nTie round";
     }
+    else if((plyr == 'rock' && cmpt == 'scissors')||
+           (plyr == 'paper' && cmpt == 'rock')||
+           (plyr == 'scissors' && cmpt == 'paper'))
+    {
+        result = plyr + " beats "+ cmpt + "\n You win";
+    }
+    else
+    {
+        result = cmpt + " beats "+ plyr + "\n You Lose";
+    }
+            
+        document.querySelector('#resultBox').innerText = result;    
 }
-
-
-
-for(i = 0; i < 5; i++){
-    playRound(playerSelection(),getComputerChoice());
-}
-
-
-
-
