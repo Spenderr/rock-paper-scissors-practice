@@ -1,5 +1,6 @@
 var choiceBtn = document.querySelectorAll('.choiceBtn');
-
+var playerScore = 0;
+var computerScore= 0;
 
 
 let player,plyr;
@@ -46,12 +47,28 @@ function playRound(plyr,cmpt)
            (plyr == 'paper' && cmpt == 'rock')||
            (plyr == 'scissors' && cmpt == 'paper'))
     {
-        result = plyr + " beats "+ cmpt + "\n You win";
+        result = plyr + " beats "+ cmpt + "\n";
+        playerScore++;
+        console.log(playerScore);
     }
     else
     {
         result = cmpt + " beats "+ plyr + "\n You Lose";
+        computerScore++;
+        console.log(computerScore);
     }
             
-        document.querySelector('#resultBox').innerText = result;    
+        document.querySelector('#resultBox').innerText = result;  
+    if(playerScore == 5)
+{
+    alert("You won the game, Congratulations");
+    
 }
+else if(computerScore == 5)
+{
+    alert("you lost the game, Retry?");
+    
+}
+    
+}
+
